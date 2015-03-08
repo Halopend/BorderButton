@@ -46,13 +46,13 @@
     if (self.frame.size.width == self.frame.size.height){
         path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
     }else {
-        path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:8];
+        path = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:6];
     }
     _circleLayer.path = path.CGPath;
     path = nil;
     _circleLayer.strokeColor = _borderColor.CGColor;
-    _circleLayer.lineWidth = 2.0f;
-    _circleLayer.fillColor = nil;
+    _circleLayer.lineWidth = 1.0f;
+    _circleLayer.fillColor = [[UIColor clearColor] CGColor];
     [[self layer] insertSublayer:_circleLayer below:self.titleLabel.layer];
 }
 - (void)setHighlighted:(BOOL)highlighted{
@@ -61,7 +61,7 @@
         self.titleLabel.textColor = [UIColor whiteColor];
     } else {
         self.titleLabel.textColor = _borderColor;
-        _circleLayer.fillColor = nil;
+        _circleLayer.fillColor = [[UIColor clearColor] CGColor];
     }
 }
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state{
